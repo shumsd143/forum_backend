@@ -29,13 +29,14 @@ app.get('/user/validity/:email',(req,res)=>{
     schema.user_presence(req.params.email,res)
 })
 app.post('/blog/post',(req,res)=>{
+    let indiaTime = new Date().toLocaleString("en-US", {timeZone: "Asia/Kolkata"});
     let blogdetail={
         email:req.body.email,
         author:req.body.author,
         title:req.body.title,
         description:req.body.description,
         blogbody:req.body.blogbody,
-        date:Date(new Date())
+        date:Date(new Date(indiaTime))
     }
     let str=blogdetail.date
     str=str.replace('GMT+0530 (India Standard Time)',' ')
